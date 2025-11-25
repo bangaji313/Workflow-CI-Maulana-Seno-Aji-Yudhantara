@@ -9,9 +9,8 @@ dependencies:
     - scikit-learn
     - pandas
     - numpy
-    - matplotlib
-    - seaborn
-    - dagshub
     - virtualenv
     - setuptools
     - wheel
+    - mlserver
+    - mlserver-mlflow

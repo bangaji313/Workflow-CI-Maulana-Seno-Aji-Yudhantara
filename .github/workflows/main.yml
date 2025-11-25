@@ -52,19 +52,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 7. Build Docker Image dari Model MLflow
-      # Syarat ADVANCED: Membuat image langsung dari model hasil training
-      - name: Build Docker Image using MLflow
+      # 7. Generate Dockerfile (Strategi Baru: Pecah prosesnya)
+      - name: Generate Dockerfile
         env:
           MLFLOW_TRACKING_URI: https://dagshub.com/${{ secrets.DAGSHUB_USERNAME }}/Eksperimen_SML_Maulana-Seno-Aji-Yudhantara.mlflow
           MLFLOW_TRACKING_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
-          mlflow models build-docker \
+          mlflow models generate-dockerfile \
             --model-uri "runs:/${{ env.RUN_ID }}/random_forest_model" \
-            --name "${{ secrets.DOCKER_USERNAME }}/credit-scoring-model:latest" 
+            --output-directory docker_build_dir \
+            --enable-mlserver
 
-      # 8. Push Image ke Docker Hub
-      - name: Push Docker Image
+      # 8. Build & Push Manual (Lebih Stabil)
+      - name: Build and Push Docker Image
         run: |
+          cd docker_build_dir
+          # Build Image
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/credit-scoring-model:latest .
+          # Push Image
           docker push ${{ secrets.DOCKER_USERNAME }}/credit-scoring-model:latest
