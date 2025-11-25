@@ -28,7 +28,7 @@ mlflow.set_experiment("Eksperimen Churn Prediction - CI/CD")
 
 # 2. LOAD DATA
 # Ambil data yang sudah dibersihkan dari Kriteria 1
-data_path = '../preprocessing/customer_churn_cleaned.csv'
+data_path = 'data/customer_churn_cleaned.csv'
 
 if not os.path.exists(data_path):
     print(f"Error: File {data_path} tidak ditemukan. Jalankan automate script dulu!")
