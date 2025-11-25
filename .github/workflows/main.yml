@@ -62,8 +62,7 @@ jobs:
         run: |
           mlflow models build-docker \
             --model-uri "runs:/${{ env.RUN_ID }}/random_forest_model" \
-            --name "${{ secrets.DOCKER_USERNAME }}/credit-scoring-model:latest" \
-            --enable-mlserver
+            --name "${{ secrets.DOCKER_USERNAME }}/credit-scoring-model:latest" 
 
       # 8. Push Image ke Docker Hub
       - name: Push Docker Image
