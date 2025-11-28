@@ -1,0 +1,14 @@
+digest: 022ae74e
+name: dataset
+profile: '{"num_rows": 352665, "num_elements": 3526650}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "Age", "required": true},
+  {"type": "long", "name": "Gender", "required": true}, {"type": "double", "name":
+  "Tenure", "required": true}, {"type": "double", "name": "Usage Frequency", "required":
+  true}, {"type": "double", "name": "Support Calls", "required": true}, {"type": "double",
+  "name": "Payment Delay", "required": true}, {"type": "long", "name": "Subscription
+  Type", "required": true}, {"type": "long", "name": "Contract Length", "required":
+  true}, {"type": "double", "name": "Total Spend", "required": true}, {"type": "double",
+  "name": "Last Interaction", "required": true}]}'
+source: '{"tags": {"mlflow.user": "Seno Aji", "mlflow.source.name": "Membangun_model\\modelling.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "f7de79c1d7554c161312681f7bd236d897441289"}}'
+source_type: code
